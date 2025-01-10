@@ -23,8 +23,8 @@ color ray_color(const ray& r, const hittable& world) {
     }
 
     vec3 unit_direction = unit_vector(r.direction());
-    auto a = 0.5 * (unit_direction.y() + 1.0);
-    return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
+    auto a = 0.5*(unit_direction.y() + 1.0);
+    return (1.0-a)*color(1.0, 1.0, 1.0) + a*color(0.5, 0.7, 1.0);
 }
 
 
@@ -98,7 +98,7 @@ void CreateBitmapFromArray(HDC hdc) {
     hBitmap = CreateBitmap(WIDTH, HEIGHT, 1, 32, pixels);
 
     if (!hMemDC) {
-        hMemDC = CreateCompatibleDC(hdc);
+        hMemDC = CreateCompatibleDC(hdc); 
     }
 
     SelectObject(hMemDC, hBitmap);
@@ -114,12 +114,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
         BitBlt(hdc, 0, 0, WIDTH, HEIGHT, hMemDC, 0, 0, SRCCOPY);
 
-        EndPaint(hwnd, &ps);
+        EndPaint(hwnd, &ps); 
         break;
     }
     case WM_TIMER: {
         //FillPixelArray();
-
+        
         render_frame();
 
         InvalidateRect(hwnd, NULL, TRUE);

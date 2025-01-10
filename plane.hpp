@@ -5,7 +5,7 @@
 
 class plane : public hittable {
 public:
-
+    double A, B, C, D;
     plane(double A, double B, double C, double D)
     {
         this->A = A;
